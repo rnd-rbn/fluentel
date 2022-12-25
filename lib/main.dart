@@ -85,16 +85,17 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Call Fluentel',
-              style: Theme.of(context).textTheme.headline4,
+              'Tap to find a language partner',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+            const SizedBox(height: 32,),
+            FloatingActionButton.large(
+              onPressed: _launchUrl,
+              tooltip: 'Call',
+              child: const Icon(Icons.phone),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _launchUrl,
-        tooltip: 'Call',
-        child: const Icon(Icons.phone),
       ),
     );
   }
