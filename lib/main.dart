@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_sim_country_code/flutter_sim_country_code.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,14 +32,46 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static const String usPhoneNumber = '+1-540-782-3352';
-  static const String mxPhoneNumber = '+52-55-9225-7010';
-  final Uri _url = Uri.parse('tel:$usPhoneNumber');
+  late Uri _url;
 
   Future<void> _launchUrl() async {
     if (!await launchUrl(_url)) {
       throw 'Could not launch $_url';
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+  }
+
+  Future<void> initPlatformState() async {
+    String? alpha2;
+    String? fluentelPhoneNumber;
+
+    try {
+      alpha2 = await FlutterSimCountryCode.simCountryCode;
+    } on PlatformException {
+      alpha2 = 'Failed to get sim country code.';
+    }
+
+    switch (alpha2) {
+      case 'us':
+        fluentelPhoneNumber = '+1-540-782-3352';
+        break;
+      case 'mx':
+        fluentelPhoneNumber = '+52-55-9225-7010';
+        break;
+      default:
+        fluentelPhoneNumber = '+1-501-444-2436';
+    }
+
+    if (!mounted) return;
+
+    setState(() {
+      _url = Uri.parse('tel:$fluentelPhoneNumber');
+    });
   }
 
   @override
