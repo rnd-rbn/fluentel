@@ -42,6 +42,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late Uri _url;
+  String targetLanguage = 'Unknown';
+  String targetCountry = 'Unknown';
 
   Future<void> _launchUrl() async {
     if (!await launchUrl(_url)) {
@@ -68,12 +70,18 @@ class _MyHomePageState extends State<MyHomePage> {
     switch (alpha2) {
       case 'us':
         fluentelPhoneNumber = '+1-540-782-3352';
+        targetLanguage = AppLocalizations.of(context)!.spanish;
+        targetCountry = AppLocalizations.of(context)!.mexico;
         break;
       case 'mx':
         fluentelPhoneNumber = '+52-55-9225-7010';
+        targetLanguage = AppLocalizations.of(context)!.english;
+        targetCountry = AppLocalizations.of(context)!.unitedStates;
         break;
       default:
         fluentelPhoneNumber = '+1-501-444-2436';
+        targetLanguage = AppLocalizations.of(context)!.unknownLanguage;
+        targetCountry = AppLocalizations.of(context)!.unknownCountry;
     }
 
     if (!mounted) return;
@@ -105,14 +113,9 @@ class _MyHomePageState extends State<MyHomePage> {
             Tooltip(
               triggerMode: TooltipTriggerMode.tap,
               showDuration: const Duration(seconds: 60),
-              message: '''
-Yes! Fluentel is a language partner phone hotline. Call the phone number any
-time you want to practice speaking Spanish and it will try to connect you with
-a native Spanish speaker from Mexico.
-              '''
-                  .replaceAll("\n", " "),
-              child: const ListTile(
-                title: Text('All this app does is dial a phone number?'),
+              message: AppLocalizations.of(context)!.faqAppOnlyCallsANumberAnswer(targetLanguage, targetCountry),
+              child: ListTile(
+                title: Text(AppLocalizations.of(context)!.faqAppOnlyCallsANumber),
               ),
             ),
             Tooltip(

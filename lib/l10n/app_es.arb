@@ -1,3 +1,24 @@
 {
-    "frequentlyAskedQuestions": "Preguntas Frecuentes"
+    "frequentlyAskedQuestions": "Preguntas Frecuentes",
+    "faqAppOnlyCallsANumber": "¿Esta aplicación solo marca un número de teléfono?",
+    "faqAppOnlyCallsANumberAnswer": "¡Sí! Fluentel es una línea telefónica directa para compañeros de idiomas. Llame al número de teléfono en cualquier momento que desee practicar hablar {language} y tratará de conectarlo con un hablante nativo de {country}.",
+    "@faqAppOnlyCallsANumberAnswer": {
+            "placeholders": {
+                "language": {
+                    "type": "String",
+                    "example": "inglés"
+                },
+                "country": {
+                    "type": "String",
+                    "example": "los Estados Unidos"
+                }
+            }
+        },
+    "spanish": "español",
+    "english": "inglés",
+    "unknownLanguage": "idioma desconocido",
+    "mexico": "México",
+    "unitedStates": "Estados Unidos",
+    "unknownCountry": "país desconocido"
+
 }

@@ -1,3 +1,24 @@
 {
-    "frequentlyAskedQuestions": "Frequently Asked Questions"
+    "frequentlyAskedQuestions": "Frequently Asked Questions",
+    "faqAppOnlyCallsANumber": "All this app does is dial a phone number?",
+    "faqAppOnlyCallsANumberAnswer": "Yes! Fluentel is a language partner phone hotline. Call the phone number any time you want to practice speaking {language} and it will try to connect you with a native speaker from {country}.",
+    "@faqAppOnlyCallsANumberAnswer": {
+            "description": "Answer for FAQ app only calls a phone number",
+            "placeholders": {
+                "language": {
+                    "type": "String",
+                    "example": "English"
+                },
+                "country": {
+                    "type": "String",
+                    "example": "Mexico"
+                }
+            }
+        },
+    "spanish": "Spanish",
+    "english": "English",
+    "unknownLanguage": "unknown language",
+    "mexico": "Mexico",
+    "unitedStates": "United States",
+    "unknownCountry": "unknown country"
 }
