@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_sim_country_code/flutter_sim_country_code.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +16,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fluentel',
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [Locale('en', ''), Locale('es', '')],
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -89,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.blue,
               ),
               child: Text(
-                'Frequently Asked Questions',
+                AppLocalizations.of(context)!.frequentlyAskedQuestions,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
