@@ -1,24 +1,65 @@
 {
     "frequentlyAskedQuestions": "Frequently Asked Questions",
     "faqAppOnlyCallsANumber": "All this app does is dial a phone number?",
-    "faqAppOnlyCallsANumberAnswer": "Yes! Fluentel is a language partner phone hotline. Call the phone number any time you want to practice speaking {language} and it will try to connect you with a native speaker from {country}.",
+    "faqAppOnlyCallsANumberAnswer": "Yes! Fluentel is a language partner phone hotline. Call the phone number any time you want to practice speaking {targetLanguage} and it will try to connect you with a native speaker from {targetCountry}.",
     "@faqAppOnlyCallsANumberAnswer": {
             "description": "Answer for FAQ app only calls a phone number",
             "placeholders": {
-                "language": {
+                "targetLanguage": {
                     "type": "String",
-                    "example": "English"
+                    "example": "Spanish"
                 },
-                "country": {
+                "targetCountry": {
                     "type": "String",
                     "example": "Mexico"
                 }
             }
         },
+    "faqWhatHappensWhenICall": "What happens when I call Fluentel?",
+    "faqWhatHappensWhenICallAnswer": "First, verify your phone number. Then you have two options: 1. find a language partner, or 2. sign up to help others.",
+    "faqHowDoISearchForALanguagePartner": "How do I search for a language partner?",
+    "faqHowDoISearchForALanguagePartnerAnswer": "You don't! Fluentel finds a language partner for you.",
+    "faqHowDoIMessageALanguagePartner": "How do I message a language partner?",
+    "faqHowDoIMessageALanguagePartnerAnswer": "You don't! Skip the courtship and get straight to the action. Fluentel gets you speaking faster than any language exchange app or service.",
+    "faqHowMuchDoesItCost": "How much does it cost?",
+    "faqHowMuchDoesItCostAnswer": "Your first 60 minutes are free, and then {centsPerMinute} cents per minute after that. You can purchase minutes directly over the phone in a secure PCI-compliant environment.",
+    "@faqHowMuchDoesItCostAnswer": {
+            "placeholders": {
+                "centsPerMinute": {
+                    "type": "String",
+                    "example": "12"
+                }
+            }
+        },
+    "faqHowCanIHelp": "How can I help people from {targetCountry} practice {myLanguage}?",
+    "@faqHowCanIHelp": {
+            "placeholders": {
+                "targetCountry": {
+                    "type": "String",
+                    "example": "Mexico"
+                },
+                "myLanguage": {
+                    "type": "String",
+                    "example": "English"
+                }
+            }
+        },
+    "faqHowCanIHelpAnswer": "When you call the Fluentel hotline, choose the option to set your availability. You will provide your timezone and a daily 3-hour availability window. Then, when someone from {targetCountry} calls Fluentel during your availability window, we will text you asking if you'd like to help them. Reply to that text message to be connected. If you're busy at that time, simply ignore the text message.",
+    "@faqHowCanIHelpAnswer": {
+            "placeholders": {
+                "targetCountry": {
+                    "type": "String",
+                    "example": "Mexico"
+                }
+            }
+        },
+    "faqWhereCanILearnMore": "Where can I learn more?",
+    "tapToFindALanguagePartner": "Tap to find a language partner",
     "spanish": "Spanish",
     "english": "English",
     "unknownLanguage": "unknown language",
     "mexico": "Mexico",
     "unitedStates": "United States",
-    "unknownCountry": "unknown country"
+    "unknownCountry": "unknown country",
+    "call": "Call"
 }
