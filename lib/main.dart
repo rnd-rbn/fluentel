@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_sim_country_code/flutter_sim_country_code.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +16,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fluentel',
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [Locale('en', ''), Locale('es', '')],
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -33,6 +42,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late Uri _url;
+  String targetLanguage = 'Unknown';
+  String targetCountry = 'Unknown';
+  String myLanguage = 'Unknown';
+  String centsPerMinute = '?';
 
   Future<void> _launchUrl() async {
     if (!await launchUrl(_url)) {
@@ -59,12 +72,24 @@ class _MyHomePageState extends State<MyHomePage> {
     switch (alpha2) {
       case 'us':
         fluentelPhoneNumber = '+1-540-782-3352';
+        targetLanguage = AppLocalizations.of(context)!.spanish;
+        targetCountry = AppLocalizations.of(context)!.mexico;
+        myLanguage = AppLocalizations.of(context)!.english;
+        centsPerMinute = '12';
         break;
       case 'mx':
         fluentelPhoneNumber = '+52-55-9225-7010';
+        targetLanguage = AppLocalizations.of(context)!.english;
+        targetCountry = AppLocalizations.of(context)!.unitedStates;
+        myLanguage = AppLocalizations.of(context)!.spanish;
+        centsPerMinute = '6';
         break;
       default:
         fluentelPhoneNumber = '+1-501-444-2436';
+        targetLanguage = AppLocalizations.of(context)!.unknownLanguage;
+        targetCountry = AppLocalizations.of(context)!.unknownCountry;
+        myLanguage = AppLocalizations.of(context)!.unknownLanguage;
+        centsPerMinute = '¯\\_(ツ)_/¯';
     }
 
     if (!mounted) return;
@@ -89,116 +114,90 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.blue,
               ),
               child: Text(
-                'Frequently Asked Questions',
+                AppLocalizations.of(context)!.frequentlyAskedQuestions,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
             Tooltip(
               triggerMode: TooltipTriggerMode.tap,
               showDuration: const Duration(seconds: 60),
-              message: '''
-Yes! Fluentel is a language partner phone hotline. Call the phone number any
-time you want to practice speaking Spanish and it will try to connect you with
-a native Spanish speaker from Mexico.
-              '''
-                  .replaceAll("\n", " "),
-              child: const ListTile(
-                title: Text('All this app does is dial a phone number?'),
+              message: AppLocalizations.of(context)!.faqAppOnlyCallsANumberAnswer(targetLanguage, targetCountry),
+              child: ListTile(
+                title: Text(AppLocalizations.of(context)!.faqAppOnlyCallsANumber),
               ),
             ),
             Tooltip(
               triggerMode: TooltipTriggerMode.tap,
               showDuration: const Duration(seconds: 60),
-              message: '''
-First, verify your phone number. Then you have two options: 1.
-find a language partner, or 2. sign up to help others.
-              '''
-                  .replaceAll("\n", " "),
-              child: const ListTile(
-                title: Text('What happens when I call Fluentel?'),
+              message: AppLocalizations.of(context)!.faqWhatHappensWhenICallAnswer,
+              child: ListTile(
+                title: Text(AppLocalizations.of(context)!.faqWhatHappensWhenICall),
               ),
             ),
             Tooltip(
               triggerMode: TooltipTriggerMode.tap,
               showDuration: const Duration(seconds: 60),
-              message: '''
-You don't! Fluentel finds a language partner for you.
-              '''
-                  .replaceAll("\n", " "),
-              child: const ListTile(
-                title: Text('How do I search for a language partner?'),
+              message: AppLocalizations.of(context)!.faqHowDoISearchForALanguagePartnerAnswer,
+              child: ListTile(
+                title: Text(AppLocalizations.of(context)!.faqHowDoISearchForALanguagePartner),
               ),
             ),
             Tooltip(
               triggerMode: TooltipTriggerMode.tap,
               showDuration: const Duration(seconds: 60),
-              message: '''
-You don't! Skip the courtship and get straight to the action. Fluentel gets you
-speaking faster than any language exchange app or service.
-              '''
-                  .replaceAll("\n", " "),
-              child: const ListTile(
-                title: Text('How do I message a language partner?'),
+              message: AppLocalizations.of(context)!.faqHowDoIMessageALanguagePartnerAnswer,
+              child: ListTile(
+                title: Text(AppLocalizations.of(context)!.faqHowDoIMessageALanguagePartner),
               ),
             ),
             Tooltip(
               triggerMode: TooltipTriggerMode.tap,
               showDuration: const Duration(seconds: 60),
-              message: '''
-Your first 60 minutes are free, and then 12 cents per minute after that. You can
-purchase minutes directly over the phone in a secure PCI-compliant environment.
-              '''
-                  .replaceAll("\n", " "),
-              child: const ListTile(
-                title: Text('How much does it cost?'),
+              message: AppLocalizations.of(context)!.faqHowMuchDoesItCostAnswer(centsPerMinute),
+              child: ListTile(
+                title: Text(AppLocalizations.of(context)!.faqHowMuchDoesItCost),
               ),
             ),
             Tooltip(
               triggerMode: TooltipTriggerMode.tap,
               showDuration: const Duration(seconds: 60),
-              message: '''
-When you call the Fluentel hotline, choose the option to set your availability.
-You will provide your timezone and a daily 3-hour availability window.
-Then, when someone from Mexico calls Fluentel during your availability window,
-we will text you asking if you'd like to help them. Reply to that text message
-to be connected. If you're busy at that time, simply ignore the text message.
-              '''
-                  .replaceAll("\n", " "),
-              child: const ListTile(
-                title: Text('How can I help people from Mexico practice English?'),
+              message: AppLocalizations.of(context)!.faqHowCanIHelpAnswer(targetCountry),
+              child: ListTile(
+                title: Text(AppLocalizations.of(context)!.faqHowCanIHelp(targetCountry, myLanguage)),
               ),
             ),
             Tooltip(
               triggerMode: TooltipTriggerMode.tap,
               showDuration: const Duration(seconds: 60),
-              message: '''
-www.fluen.tel
-              '''
-                  .replaceAll("\n", " "),
-              child: const ListTile(
-                title: Text('Where can I learn more?'),
+              message: 'www.fluen.tel',
+              child: ListTile(
+                title: Text(AppLocalizations.of(context)!.faqWhereCanILearnMore),
               ),
             ),
           ],
         ),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Tap to find a language partner',
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            FloatingActionButton.large(
-              onPressed: _launchUrl,
-              tooltip: 'Call',
-              child: const Icon(Icons.phone),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                AppLocalizations.of(context)!.tapToFindALanguagePartner,
+                style: Theme.of(context).textTheme.headlineSmall,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              FloatingActionButton.large(
+                onPressed: _launchUrl,
+                tooltip: AppLocalizations.of(context)!.call,
+                child: const Icon(Icons.phone),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,0 +1,65 @@
+{
+    "frequentlyAskedQuestions": "Preguntas Frecuentes",
+    "faqAppOnlyCallsANumber": "¿Esta aplicación solo marca un número de teléfono?",
+    "faqAppOnlyCallsANumberAnswer": "¡Sí! Fluentel es una línea telefónica directa para compañeros de idiomas. Llame al número de teléfono en cualquier momento que desee practicar hablar {targetLanguage} y tratará de conectarlo con un hablante nativo de {targetCountry}.",
+    "@faqAppOnlyCallsANumberAnswer": {
+            "description": "Answer for FAQ app only calls a phone number",
+            "placeholders": {
+                "targetLanguage": {
+                    "type": "String",
+                    "example": "inglés"
+                },
+                "targetCountry": {
+                    "type": "String",
+                    "example": "los Estados Unidos"
+                }
+            }
+        },
+    "faqWhatHappensWhenICall": "¿Qué pasa cuando llamo a Fluentel?",
+    "faqWhatHappensWhenICallAnswer": "Primero, verifica tu número de teléfono. Luego tiene dos opciones: 1. encuentra un compañero de idioma, o 2. regístrase para ayudar a otros.",
+    "faqHowDoISearchForALanguagePartner": "¿Cómo puedo buscar un compañero de idioma?",
+    "faqHowDoISearchForALanguagePartnerAnswer": "¡No puedes! Fluentel encuentra un compañero de idioma para ti.",
+    "faqHowDoIMessageALanguagePartner": "¿Cómo puedo enviar un mensaje a un compañero de idioma?",
+    "faqHowDoIMessageALanguagePartnerAnswer": "¡No puedes! Salta el cortejo y ve directamente a la acción. Fluentel te hace hablar más rápido que cualquier aplicación o servicio de intercambio de idiomas.",
+    "faqHowMuchDoesItCost": "¿Cuánto cuesta?",
+    "faqHowMuchDoesItCostAnswer": "Tus primeros 60 minutos son gratis, y luego {centsPerMinute} centavos $US por minuto después de eso. Puedes comprar minutos directamente por teléfono en un entorno seguro compatible con PCI.",
+    "@faqHowMuchDoesItCostAnswer": {
+            "placeholders": {
+                "centsPerMinute": {
+                    "type": "String",
+                    "example": "6"
+                }
+            }
+        },
+    "faqHowCanIHelp": "¿Cómo puedo ayudar a las personas de {targetCountry} a practicar {myLanguage}?",
+    "@faqHowCanIHelp": {
+            "placeholders": {
+                "targetCountry": {
+                    "type": "String",
+                    "example": "Estados Unidos"
+                },
+                "myLanguage": {
+                    "type": "String",
+                    "example": "Español"
+                }
+            }
+        },
+    "faqHowCanIHelpAnswer": "Cuando llama a la línea directa de Fluentel, elija la opción para establecer tu disponibilidad. Proporcionará tu zona horaria y una ventana de disponibilidad diaria de 3 horas. Luego, cuando alguien de {targetCountry} llame a Fluentel durante tu ventana de disponibilidad, te enviaremos un mensaje preguntando si desea ayudarlo. Responda a ese mensaje de texto para conectarte. Si está ocupado en ese momento, simplemente ignore el mensaje de texto.",
+    "@faqHowCanIHelpAnswer": {
+            "placeholders": {
+                "targetCountry": {
+                    "type": "String",
+                    "example": "Estados Unidos"
+                }
+            }
+        },
+    "faqWhereCanILearnMore": "¿Dónde puedo aprender más?",
+    "tapToFindALanguagePartner": "Toca para encontrar un compañero de idioma",
+    "spanish": "español",
+    "english": "inglés",
+    "unknownLanguage": "idioma desconocido",
+    "mexico": "México",
+    "unitedStates": "Estados Unidos",
+    "unknownCountry": "país desconocido",
+    "call": "Llama"
+}
