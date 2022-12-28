@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
       alpha2 = 'Failed to get sim country code.';
     }
 
-    switch (alpha2) {
+    switch (alpha2?.toLowerCase()) {
       case 'us':
         fluentelPhoneNumber = '+1-540-782-3352';
         targetLanguage = AppLocalizations.of(context)!.spanish;
