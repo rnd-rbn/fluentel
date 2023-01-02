@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -44,8 +46,12 @@ class _MyHomePageState extends State<MyHomePage> {
   late Uri _url;
   String targetLanguage = 'Unknown';
   String targetCountry = 'Unknown';
+  String targetPopulation = 'Unknown';
   String myLanguage = 'Unknown';
   String centsPerMinute = '?';
+
+  Timer? timer;
+  int timerDuration = 7;
 
   Future<void> _launchUrl() async {
     if (!await launchUrl(_url)) {
@@ -56,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    setTimer();
     initPlatformState();
   }
 
@@ -74,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
         fluentelPhoneNumber = '+1-540-782-3352';
         targetLanguage = AppLocalizations.of(context)!.spanish;
         targetCountry = AppLocalizations.of(context)!.mexico;
+        targetPopulation = AppLocalizations.of(context)!.mexicans;
         myLanguage = AppLocalizations.of(context)!.english;
         centsPerMinute = '12';
         break;
@@ -81,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
         fluentelPhoneNumber = '+52-55-9225-7010';
         targetLanguage = AppLocalizations.of(context)!.english;
         targetCountry = AppLocalizations.of(context)!.unitedStates;
+        targetPopulation = AppLocalizations.of(context)!.americans;
         myLanguage = AppLocalizations.of(context)!.spanish;
         centsPerMinute = '6';
         break;
@@ -88,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
         fluentelPhoneNumber = '+1-501-444-2436';
         targetLanguage = AppLocalizations.of(context)!.unknownLanguage;
         targetCountry = AppLocalizations.of(context)!.unknownCountry;
+        targetPopulation = AppLocalizations.of(context)!.unknownPopulation;
         myLanguage = AppLocalizations.of(context)!.unknownLanguage;
         centsPerMinute = '¯\\_(ツ)_/¯';
     }
@@ -97,6 +107,31 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _url = Uri.parse('tel:$fluentelPhoneNumber');
     });
+  }
+
+  setTimer() {
+    timer = Timer(Duration(seconds: timerDuration), () => updateTimerDuration());
+  }
+
+  updateTimerDuration() {
+    setState(() {
+      timerDuration = 7 == timerDuration ? 3 : 7;
+    });
+    setTimer();
+  }
+
+  callToActionText(int timerDuration) {
+    if (7 == timerDuration) {
+      return AppLocalizations.of(context)!.tapToFindALanguagePartner;
+    } else {
+      return AppLocalizations.of(context)!.tapToHelpOthers(targetPopulation, myLanguage);
+    }
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -183,18 +218,30 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                AppLocalizations.of(context)!.tapToFindALanguagePartner,
-                style: Theme.of(context).textTheme.headlineSmall,
-                textAlign: TextAlign.center,
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      callToActionText(timerDuration),
+                      style: Theme.of(context).textTheme.headlineSmall,
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(
-                height: 32,
-              ),
-              FloatingActionButton.large(
-                onPressed: _launchUrl,
-                tooltip: AppLocalizations.of(context)!.call,
-                child: const Icon(Icons.phone),
+              const SizedBox(height: 32),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    FloatingActionButton.large(
+                      onPressed: _launchUrl,
+                      tooltip: AppLocalizations.of(context)!.call,
+                      child: const Icon(Icons.phone),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
