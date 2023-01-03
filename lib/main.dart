@@ -42,7 +42,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
   late Uri _url;
   String targetLanguage = 'Unknown';
   String targetCountry = 'Unknown';
@@ -226,6 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       callToActionText(timerDuration),
                       style: Theme.of(context).textTheme.headlineSmall,
                       textAlign: TextAlign.center,
+                      overflow: TextOverflow.visible,
                     ),
                   ],
                 ),
