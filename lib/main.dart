@@ -1,3 +1,4 @@
+import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -46,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String targetCountry = 'Unknown';
   String myLanguage = 'Unknown';
   String centsPerMinute = '?';
+  late Contact newContact;
 
   Future<void> _launchUrl() async {
     if (!await launchUrl(_url)) {
@@ -57,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     initPlatformState();
+    initContact();
   }
 
   Future<void> initPlatformState() async {
@@ -99,11 +102,44 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  initContact() async {
+    final ByteData bytes = await rootBundle.load('assets/launch_icon_iOS.png');
+    final Uint8List fluentelAvatar = bytes.buffer.asUint8List();
+
+    Contact _newContact = Contact(
+      company: 'ACME',
+      avatar: fluentelAvatar,
+      emails: [
+        Item(label: 'work', value: 'support@fluen.tel'),
+      ],
+      phones: [
+        Item(label: 'work', value: '+15407823352'),
+      ],
+    );
+
+    newContact = _newContact;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person_add),
+            tooltip: 'Add to Contacts',
+            onPressed: () async {
+              //TODO: add explicit Permission handling for Android
+              // https://stackoverflow.com/questions/57969216/getting-this-error-unhandled-exception-formatexception-invalid-envelope-wh
+              try {
+                await ContactsService.addContact(newContact);
+              } catch (e) {
+                print("Caught error: $e");
+              }
+            },
+          ),
+        ],
       ),
       drawer: Drawer(
         child: ListView(
