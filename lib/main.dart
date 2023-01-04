@@ -114,6 +114,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   }
 
   updateTimerDuration() {
+    timer?.cancel();
     setState(() {
       timerDuration = 7 == timerDuration ? 3 : 7;
     });
@@ -122,9 +123,17 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
 
   callToActionText(int timerDuration) {
     if (7 == timerDuration) {
-      return AppLocalizations.of(context)!.tapToFindALanguagePartner;
+      return [
+        const WidgetSpan(child: Icon(Icons.person_search_outlined), alignment: PlaceholderAlignment.middle),
+        const TextSpan(text: ' '),
+        TextSpan(text: AppLocalizations.of(context)!.tapToFindALanguagePartner),
+      ];
     } else {
-      return AppLocalizations.of(context)!.tapToHelpOthers(targetPopulation, myLanguage);
+      return [
+        const WidgetSpan(child: Icon(Icons.volunteer_activism_outlined), alignment: PlaceholderAlignment.middle),
+        const TextSpan(text: ' '),
+        TextSpan(text: AppLocalizations.of(context)!.tapToHelpOthers(targetPopulation, myLanguage)),
+      ];
     }
   }
 
@@ -222,8 +231,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      callToActionText(timerDuration),
+                    Text.rich(
+                      TextSpan(
+                        children: callToActionText(timerDuration),
+                      ),
                       style: Theme.of(context).textTheme.headlineSmall,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.visible,
