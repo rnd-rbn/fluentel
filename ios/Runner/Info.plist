@@ -54,5 +54,7 @@
 	<true/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSContactsUsageDescription</key>
+	<string>Press OK to add Fluentel as a Contact. Then you can call directly without this app, or say *Hey Siri, call Fluentel*</string>
 </dict>
 </plist>
