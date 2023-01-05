@@ -55,11 +55,27 @@
         },
     "faqWhereCanILearnMore": "¿Dónde puedo aprender más?",
     "tapToFindALanguagePartner": "Toca para encontrar un compañero de idioma",
+    "tapToHelpOthers": "Toca para ayudar a los {targetPopulation} a hablar {myLanguage}",
+    "@tapToHelpOthers": {
+            "placeholders": {
+                "targetPopulation": {
+                    "type": "String",
+                    "example": "estadounidenses"
+                },
+                "myLanguage": {
+                    "type": "String",
+                    "example": "español"
+                }
+            }
+        },
     "spanish": "español",
     "english": "inglés",
     "unknownLanguage": "idioma desconocido",
     "mexico": "México",
+    "mexicans": "mexicanos",
     "unitedStates": "Estados Unidos",
+    "americans": "estadounidenses",
     "unknownCountry": "país desconocido",
+    "unknownPopulation": "población desconocido",
     "call": "Llama"
 }
