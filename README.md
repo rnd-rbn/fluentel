@@ -89,7 +89,7 @@ Your first 60 minutes to try Fluentel are free. After that it costs 12 cents $US
 
 #### How to buy more minutes
 
-Callers can buy more minutes directly over the phone! Fluentel uses (Twilio Pay)[https://www.twilio.com/pay] to provide a safe & secure, PCI-compliant environment. Fluentel does not record or save your payment information.
+Callers can buy more minutes directly over the phone! Fluentel uses [Twilio Pay](https://www.twilio.com/pay) to provide a safe & secure, PCI-compliant environment. Fluentel does not record or save your payment information.
 
 #### Every call is recorded
 
@@ -115,11 +115,11 @@ No. But we recommend using something normal so that your partner can easily refe
 
 ### My question isn't listed here. Where can I ask it?
 
-Create a (new issue here)[https://github.com/rnd-rbn/fluentel/issues/new]. Give it a title and any context in the description. Or email me directly aaron@fluen.tel
+Create a [new issue here](https://github.com/rnd-rbn/fluentel/issues/new). Give it a title and any context in the description. Or email me directly aaron@fluen.tel
 
 ## The Mobile App
 
-The Fluentel mobile app is a single-button app just like (Shazam)[https://www.shazam.com/apps] or (Noonlight)[https://www.noonlight.com/noonlight-app]. The main thing the Fluentel app does is call your country's Fluentel phone number.
+The Fluentel mobile app is a single-button app just like [Shazam](https://www.shazam.com/apps) or [Noonlight](https://www.noonlight.com/noonlight-app). The main thing the Fluentel app does is call your country's Fluentel phone number.
 
 ### Future Features
 
@@ -127,7 +127,7 @@ Here are some features I've been thinking about adding:
 * a button to add Fluentel to contacts (so you can do stuff like say "Hey Siri, call Fluentel")
 * a place to see how many mentors are currently available (if there's zero at 3:00 AM, then there's no sense in calling)
 * a way to set your daily availability as a mentor (currently you can only set your availability by using the call prompt)
-* got an idea? (submit an issue here)[https://github.com/rnd-rbn/fluentel/issues/new] or email me directly aaron@fluen.tel
+* got an idea? [submit an issue here](https://github.com/rnd-rbn/fluentel/issues/new) or email me directly aaron@fluen.tel
 
 ---
 
