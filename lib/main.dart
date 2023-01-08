@@ -218,6 +218,14 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 title: Text(AppLocalizations.of(context)!.faqWhereCanILearnMore),
               ),
             ),
+            Tooltip(
+              triggerMode: TooltipTriggerMode.tap,
+              showDuration: const Duration(seconds: 60),
+              message: 'https://call.fluen.tel/github',
+              child: ListTile(
+                title: Text(AppLocalizations.of(context)!.faqWhereIsTheCode),
+              ),
+            ),
           ],
         ),
       ),

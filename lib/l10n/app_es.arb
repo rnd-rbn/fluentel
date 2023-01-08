@@ -1,4 +1,5 @@
 {
+    "generateTranslations": "flutter gen-l10n",
     "frequentlyAskedQuestions": "Preguntas Frecuentes",
     "faqAppOnlyCallsANumber": "¿Esta aplicación solo marca un número de teléfono?",
     "faqAppOnlyCallsANumberAnswer": "¡Sí! Fluentel es una línea telefónica directa para compañeros de idiomas. Llame al número de teléfono en cualquier momento que desee practicar hablar {targetLanguage} y tratará de conectarlo con un hablante nativo de {targetCountry}.",
@@ -54,6 +55,7 @@
             }
         },
     "faqWhereCanILearnMore": "¿Dónde puedo aprender más?",
+    "faqWhereIsTheCode": "Nuestro código se publica",
     "tapToFindALanguagePartner": "Toca para encontrar un compañero de idioma",
     "tapToHelpOthers": "Toca para ayudar a los {targetPopulation} a hablar {myLanguage}",
     "@tapToHelpOthers": {

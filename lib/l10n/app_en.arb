@@ -1,4 +1,5 @@
 {
+    "generateTranslations": "flutter gen-l10n",
     "frequentlyAskedQuestions": "Frequently Asked Questions",
     "faqAppOnlyCallsANumber": "All this app does is dial a phone number?",
     "faqAppOnlyCallsANumberAnswer": "Yes! Fluentel is a language partner phone hotline. Call the phone number any time you want to practice speaking {targetLanguage} and it will try to connect you with a native speaker from {targetCountry}.",
@@ -54,6 +55,7 @@
             }
         },
     "faqWhereCanILearnMore": "Where can I learn more?",
+    "faqWhereIsTheCode": "Our code is publicly available",
     "tapToFindALanguagePartner": "Tap to find a language partner",
     "tapToHelpOthers": "Tap to help {targetPopulation} speak {myLanguage}",
     "@tapToHelpOthers": {
