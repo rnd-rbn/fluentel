@@ -79,5 +79,11 @@
     "americans": "Americans",
     "unknownCountry": "unknown country",
     "unknownPopulation": "unknown population",
+    "tooltipAddToContacts": "Add to Contacts",
+    "contactAdded": "Contact added",
+    "contactAlreadyExists": "Contact already exists",
+    "contactRestricted": "This device restricts adding contacts",
+    "contactPermanentlyDenied": "You must enable this permission in your device settings",
+    "sorrySomethingWentWrong": "Sorry, something went wrong",
     "call": "Call"
 }
