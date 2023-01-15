@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_sim_country_code/flutter_sim_country_code.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,11 +46,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
   late Uri _url;
+  late String fluentelPhoneNumber;
   String targetLanguage = 'Unknown';
   String targetCountry = 'Unknown';
   String targetPopulation = 'Unknown';
   String myLanguage = 'Unknown';
   String centsPerMinute = '?';
+  String supportEmail = 'support@fluen.tel';
   late Contact newContact;
 
   Timer? timer;
@@ -66,12 +69,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     super.initState();
     setTimer();
     initPlatformState();
-    initContact();
   }
 
   Future<void> initPlatformState() async {
     String? alpha2;
-    String? fluentelPhoneNumber;
 
     try {
       alpha2 = await FlutterSimCountryCode.simCountryCode;
@@ -81,27 +82,30 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
 
     switch (alpha2?.toLowerCase()) {
       case 'us':
-        fluentelPhoneNumber = '+1-540-782-3352';
+        fluentelPhoneNumber = '+15407823352';
         targetLanguage = AppLocalizations.of(context)!.spanish;
         targetCountry = AppLocalizations.of(context)!.mexico;
         targetPopulation = AppLocalizations.of(context)!.mexicans;
         myLanguage = AppLocalizations.of(context)!.english;
+        supportEmail = 'support@fluen.tel';
         centsPerMinute = '12';
         break;
       case 'mx':
-        fluentelPhoneNumber = '+52-55-9225-7010';
+        fluentelPhoneNumber = '+525592257010';
         targetLanguage = AppLocalizations.of(context)!.english;
         targetCountry = AppLocalizations.of(context)!.unitedStates;
         targetPopulation = AppLocalizations.of(context)!.americans;
         myLanguage = AppLocalizations.of(context)!.spanish;
+        supportEmail = 'ayuda@fluen.tel';
         centsPerMinute = '6';
         break;
       default:
-        fluentelPhoneNumber = '+1-501-444-2436';
+        fluentelPhoneNumber = '+15014442436';
         targetLanguage = AppLocalizations.of(context)!.unknownLanguage;
         targetCountry = AppLocalizations.of(context)!.unknownCountry;
         targetPopulation = AppLocalizations.of(context)!.unknownPopulation;
         myLanguage = AppLocalizations.of(context)!.unknownLanguage;
+        supportEmail = 'support@fluen.tel';
         centsPerMinute = '¯\\_(ツ)_/¯';
     }
 
@@ -151,17 +155,58 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     final Uint8List fluentelAvatar = bytes.buffer.asUint8List();
 
     Contact _newContact = Contact(
-      company: 'ACME',
+      company: 'Fluentel',
       avatar: fluentelAvatar,
       emails: [
-        Item(label: 'work', value: 'support@fluen.tel'),
+        Item(label: 'work', value: supportEmail),
       ],
       phones: [
-        Item(label: 'work', value: '+15407823352'),
+        Item(label: 'work', value: fluentelPhoneNumber),
       ],
     );
 
     newContact = _newContact;
+  }
+
+  findOrAddContact() async {
+    List<Contact> _contacts = await ContactsService.getContactsForPhone(fluentelPhoneNumber);
+
+    if (_contacts.isEmpty) {
+      await initContact();
+      await ContactsService.addContact(newContact);
+      var _snackBar = SnackBar(content: Text(AppLocalizations.of(context)!.contactAdded));
+      ScaffoldMessenger.of(context).showSnackBar(_snackBar);
+    } else {
+      var _snackBar = SnackBar(content: Text(AppLocalizations.of(context)!.contactAlreadyExists));
+      ScaffoldMessenger.of(context).showSnackBar(_snackBar);
+    }
+  }
+
+  handleAddContact() async {
+    var status = await Permission.contacts.status;
+
+    switch (status) {
+      case PermissionStatus.denied:
+        if (await Permission.contacts.request().isGranted) {
+          findOrAddContact();
+        }
+        break;
+      case PermissionStatus.granted:
+        findOrAddContact();
+        break;
+      case PermissionStatus.restricted:
+        var _snackBar = SnackBar(content: Text(AppLocalizations.of(context)!.contactRestricted));
+        ScaffoldMessenger.of(context).showSnackBar(_snackBar);
+        break;
+      case PermissionStatus.permanentlyDenied:
+        var _snackBar = SnackBar(content: Text(AppLocalizations.of(context)!.contactPermanentlyDenied));
+        ScaffoldMessenger.of(context).showSnackBar(_snackBar);
+        openAppSettings();
+        break;
+      default:
+        var _snackBar = SnackBar(content: Text(AppLocalizations.of(context)!.sorrySomethingWentWrong));
+        ScaffoldMessenger.of(context).showSnackBar(_snackBar);
+    }
   }
 
   @override
@@ -172,12 +217,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         actions: [
           IconButton(
             icon: const Icon(Icons.person_add),
-            tooltip: 'Add to Contacts',
-            onPressed: () async {
-              //TODO: add explicit Permission handling for Android
-              // https://stackoverflow.com/questions/57969216/getting-this-error-unhandled-exception-formatexception-invalid-envelope-wh
+            tooltip: AppLocalizations.of(context)!.tooltipAddToContacts,
+            onPressed: () {
               try {
-                await ContactsService.addContact(newContact);
+                handleAddContact();
               } catch (e) {
                 print("Caught error: $e");
               }
