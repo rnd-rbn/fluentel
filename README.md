@@ -2,7 +2,7 @@
 
 Hello fellow language learner,
 
-Welcome to the code for the Fluentel mobile app! The purpose of the mobile app is to make it easier for language learners of Spanish and English in the United States and Mexico to discover Fluentel. Prior to the mobile app, Fluentel consisted only of the phone hotline itself and [the website](https://fluen.tel).
+Welcome to the code for the Fluentel mobile app! The purpose of the mobile app is to make it easier for language learners of Spanish and English in the United States and Mexico to discover and use the Fluentel language partner phone hotline. Prior to the mobile app, Fluentel consisted only of the phone hotline itself and [the website](https://fluen.tel).
 
 ## Why Fluentel?
 > There's a lot of language learning _fish in the sea_, but not a whole lot of _proficiency_.
