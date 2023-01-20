@@ -45,9 +45,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
-  late Uri _url;
+  late Uri _urlFluentelPhone;
   late String fluentelPhoneNumber;
-  String targetLanguage = 'Unknown';
+  late Uri _urlFluentelMentorForm;
+  late String fluentelMentorForm;
   String targetCountry = 'Unknown';
   String targetPopulation = 'Unknown';
   String myLanguage = 'Unknown';
@@ -58,9 +59,15 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   Timer? timer;
   int timerDuration = 7;
 
-  Future<void> _launchUrl() async {
-    if (!await launchUrl(_url)) {
-      throw 'Could not launch $_url';
+  Future<void> _launchUrlFluentelPhone() async {
+    if (!await launchUrl(_urlFluentelPhone)) {
+      throw 'Could not launch $_urlFluentelPhone';
+    }
+  }
+
+  Future<void> _launchUrlFluentelMentorForm() async {
+    if (!await launchUrl(_urlFluentelMentorForm)) {
+      throw 'Could not launch $_urlFluentelMentorForm';
     }
   }
 
@@ -83,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     switch (alpha2?.toLowerCase()) {
       case 'us':
         fluentelPhoneNumber = '+15407823352';
-        targetLanguage = AppLocalizations.of(context)!.spanish;
+        fluentelMentorForm = 'https://call.fluen.tel/mentor-usa';
         targetCountry = AppLocalizations.of(context)!.mexico;
         targetPopulation = AppLocalizations.of(context)!.mexicans;
         myLanguage = AppLocalizations.of(context)!.english;
@@ -92,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         break;
       case 'mx':
         fluentelPhoneNumber = '+525592257010';
-        targetLanguage = AppLocalizations.of(context)!.english;
+        fluentelMentorForm = 'https://call.fluen.tel/mentor-mex';
         targetCountry = AppLocalizations.of(context)!.unitedStates;
         targetPopulation = AppLocalizations.of(context)!.americans;
         myLanguage = AppLocalizations.of(context)!.spanish;
@@ -101,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         break;
       default:
         fluentelPhoneNumber = '+15014442436';
-        targetLanguage = AppLocalizations.of(context)!.unknownLanguage;
+        fluentelMentorForm = 'https://www.fluen.tel';
         targetCountry = AppLocalizations.of(context)!.unknownCountry;
         targetPopulation = AppLocalizations.of(context)!.unknownPopulation;
         myLanguage = AppLocalizations.of(context)!.unknownLanguage;
@@ -112,7 +119,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     if (!mounted) return;
 
     setState(() {
-      _url = Uri.parse('tel:$fluentelPhoneNumber');
+      _urlFluentelPhone = Uri.parse('tel:$fluentelPhoneNumber');
+      _urlFluentelMentorForm = Uri.parse(fluentelMentorForm);
     });
   }
 
@@ -216,6 +224,17 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         title: Text(widget.title),
         actions: [
           IconButton(
+            icon: const Icon(Icons.event_repeat),
+            tooltip: AppLocalizations.of(context)!.tooltipSetMentoringSchedule,
+            onPressed: () {
+              try {
+                _launchUrlFluentelMentorForm();
+              } catch (e) {
+                print("Caught error: $e");
+              }
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.person_add),
             tooltip: AppLocalizations.of(context)!.tooltipAddToContacts,
             onPressed: () {
@@ -239,14 +258,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               child: Text(
                 AppLocalizations.of(context)!.frequentlyAskedQuestions,
                 style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ),
-            Tooltip(
-              triggerMode: TooltipTriggerMode.tap,
-              showDuration: const Duration(seconds: 60),
-              message: AppLocalizations.of(context)!.faqAppOnlyCallsANumberAnswer(targetLanguage, targetCountry),
-              child: ListTile(
-                title: Text(AppLocalizations.of(context)!.faqAppOnlyCallsANumber),
               ),
             ),
             Tooltip(
@@ -335,7 +346,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     FloatingActionButton.large(
-                      onPressed: _launchUrl,
+                      onPressed: _launchUrlFluentelPhone,
                       tooltip: AppLocalizations.of(context)!.call,
                       child: const Icon(Icons.phone),
                     ),
