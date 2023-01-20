@@ -1,21 +1,6 @@
 {
     "generateTranslations": "flutter gen-l10n",
     "frequentlyAskedQuestions": "Preguntas Frecuentes",
-    "faqAppOnlyCallsANumber": "¿Esta aplicación solo marca un número de teléfono?",
-    "faqAppOnlyCallsANumberAnswer": "¡Sí! Fluentel es una línea telefónica directa para compañeros de idiomas. Llame al número de teléfono en cualquier momento que desee practicar hablar {targetLanguage} y tratará de conectarlo con un hablante nativo de {targetCountry}.",
-    "@faqAppOnlyCallsANumberAnswer": {
-            "description": "Answer for FAQ app only calls a phone number",
-            "placeholders": {
-                "targetLanguage": {
-                    "type": "String",
-                    "example": "inglés"
-                },
-                "targetCountry": {
-                    "type": "String",
-                    "example": "los Estados Unidos"
-                }
-            }
-        },
     "faqWhatHappensWhenICall": "¿Qué pasa cuando llamo a Fluentel?",
     "faqWhatHappensWhenICallAnswer": "Primero, verifica tu número de teléfono. Luego tiene dos opciones: 1. encuentra un compañero de idioma, o 2. regístrase para ayudar a otros.",
     "faqHowDoISearchForALanguagePartner": "¿Cómo puedo buscar un compañero de idioma?",
@@ -79,6 +64,7 @@
     "americans": "estadounidenses",
     "unknownCountry": "país desconocido",
     "unknownPopulation": "población desconocido",
+    "tooltipSetMentoringSchedule": "Fija el horario de mentoría",
     "tooltipAddToContacts": "Añadir a Contactos",
     "contactAdded": "Contacto añadido",
     "contactAlreadyExists": "Contacto ya existe",
