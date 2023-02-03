@@ -1,3 +1,11 @@
+APPLE APP STORE HAS REJECTED THE APP DUE TO MINIMUM FUNCTIONALITY. WE DON'T KNOW WHAT THE THRESHOLD IS FOR MINIMUM FUNCTIONALITY BECAUSE APPLE WON'T ELABORATE, BUT WE ARE ACTIVELY BUILDING NEW FEATURES TO GET THERE. CURRENT FEATURES REJECTED:
+* single button to call Fluentel hotline
+* menu drawer with FAQ
+* app bar button to add Fluentel to contacts
+* app bar button to submit your mentoring availability
+
+---
+
 # Fluentel
 
 Hello fellow language learner,
