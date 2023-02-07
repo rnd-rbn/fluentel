@@ -1,8 +1,18 @@
-APPLE APP STORE HAS REJECTED THE APP DUE TO MINIMUM FUNCTIONALITY. WE DON'T KNOW WHAT THE THRESHOLD IS FOR MINIMUM FUNCTIONALITY BECAUSE APPLE WON'T ELABORATE, BUT WE ARE ACTIVELY BUILDING NEW FEATURES TO GET THERE. CURRENT FEATURES REJECTED:
+```
+MOBILE APP IS ANDROID-ONLY FOR NOW!
+
+APPLE APP STORE HAS REJECTED THE APP DUE TO MINIMUM FUNCTIONALITY.
+WE DON'T KNOW WHAT THE THRESHOLD IS FOR MINIMUM FUNCTIONALITY BECAUSE APPLE WON'T ELABORATE.
+BUT WE ARE ACTIVELY BUILDING NEW FEATURES TO GET THERE. CURRENT FEATURES REJECTED:
 * single button to call Fluentel hotline
 * menu drawer with FAQ
 * app bar button to add Fluentel to contacts
 * app bar button to submit your mentoring availability
+
+WE WANT TO IMPROVE THE APP'S FEATURES BASED ON WHAT OUR USERS SAY THEY WANT.
+AS ANDROID USERS GIVE US FEEDBACK, WE WILL BUILD THOSE FEATURES.
+EVENTUALLY WE'LL HAVE ENOUGH FEATURES TO MAKE APPLE HAPPY.
+```
 
 ---
 
@@ -85,7 +95,7 @@ Mentors set their availability for each day they can help. They provide their ti
 
 #### How does Fluentel connect callers to mentors?
 
-When you call Fluentel, we will text a handful of available mentors. You (the caller) will [listen to some nice waiting music](https://youtu.be/dQw4w9WgXcQ) until one of the mentors responds to our text message. If nobody responds within 3 minutes, the call with end. But if someone does respond, we will connect you to them.
+When you call Fluentel, we will text a handful of available mentors. You (the caller) will [listen to some nice waiting music](https://youtu.be/dQw4w9WgXcQ) until one of the mentors responds to our text message. If nobody responds within 3 minutes, the call will end. But if someone does respond, we will connect you to them.
 
 #### The conversation
 
@@ -98,6 +108,9 @@ Your first 60 minutes to try Fluentel are free. After that it costs 12 cents $US
 #### How to buy more minutes
 
 Callers can buy more minutes directly over the phone! Fluentel uses [Twilio Pay](https://www.twilio.com/pay) to provide a safe & secure, PCI-compliant environment. Fluentel does not record or save your payment information.
+
+#### Why isn't Fluentel free like other apps?
+Other apps use your data and presence to show you ads. You're paying for it with your attention and privacy. Also, some of these other apps are venture-funded and may not even be profitable, which means eventually [they will shut down (SharedTalk and HelloLingo)](https://www.quora.com/Why-is-Sharedtalk-closing-down). Fluentel is priced low enough to barely cover costs and grow sustainably. We have to cover the costs of using [Twilio's programmable voice, programmable messaging, SendGrid email API, and Verify](https://www.twilio.com/pricing). Generally, traditional telephone calls are more expensive than [VoIP calls](https://www.twilio.com/blog/what-is-voip-phone).
 
 #### Every call is recorded
 
