@@ -142,14 +142,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         const WidgetSpan(child: Icon(Icons.person_search_outlined), alignment: PlaceholderAlignment.middle),
         const TextSpan(text: ' '),
         TextSpan(text: AppLocalizations.of(context)!.tapToFindALanguagePartner),
-        const TextSpan(text: '5'),
       ];
     } else {
       return [
         const WidgetSpan(child: Icon(Icons.volunteer_activism_outlined), alignment: PlaceholderAlignment.middle),
         const TextSpan(text: ' '),
         TextSpan(text: AppLocalizations.of(context)!.tapToHelpOthers(targetPopulation, myLanguage)),
-        const TextSpan(text: '5'),
       ];
     }
   }
